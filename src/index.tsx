@@ -7,8 +7,8 @@ import * as serviceWorker from "./serviceWorker";
 import Hello from "./components/Hello";
 
 ReactDOM.render(
-  <Hello name="TypeScript" enthusiasmLevel={10} />,
-  document.getElementById("root")
+  <Hello name="TypeScript" enthusiasmLevel={1} />,
+  document.getElementById("root") as HTMLElement
 );
 
 // If you want your app to work offline and load faster, you can change
