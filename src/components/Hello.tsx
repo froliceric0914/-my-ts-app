@@ -1,11 +1,12 @@
 import * as React from "react";
-import { render } from "react-dom";
+import "./Hello.css";
 
 export interface Props {
   name: string;
   enthusiasmLevel?: number;
 }
 
+//  why need to declare the State in the other object, not in the Props
 interface State {
   currentEnthusiasm: number;
 }
