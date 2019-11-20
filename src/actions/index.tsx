@@ -10,12 +10,12 @@ export interface DecrementEnthusiasm {
 
 export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
 
-export function IncrementEnthusiasm(): IncrementEnthusiasm {
+export function incrementEnthusiasm(): IncrementEnthusiasm {
   return {
     type: constants.INCREMENT_ENTHUSIASM
   };
 }
-export function DecrementEnthusiasm(): DecrementEnthusiasm {
+export function decrementEnthusiasm(): DecrementEnthusiasm {
   return {
     type: constants.DECREMENT_ENTHUSIASM
   };

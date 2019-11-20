@@ -1,45 +1,28 @@
 import * as React from "react";
+
 import "./Hello.css";
 
 export interface Props {
   name: string;
   enthusiasmLevel?: number;
+  onIncrement?: () => void;
+  onDecrement?: () => void;
 }
 
-//  why need to declare the State in the other object, not in the Props
-interface State {
-  currentEnthusiasm: number;
-}
-
-class Hello extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = { currentEnthusiasm: props.enthusiasmLevel || 1 };
+function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
+  if (enthusiasmLevel <= 0) {
+    throw new Error("You could be a little more enthusiastic. :D");
   }
 
-  onIncrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm + 1);
-  onDecrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm - 1);
-  render() {
-    const { name } = this.props;
-
-    if (this.state.currentEnthusiasm <= 0) {
-      throw new Error("You could be a little more enthusiastic. :D");
-    }
-
-    return (
-      <div className="hello">
-        <div className="greeting">
-          Hello {name + getExclamationMarks(this.state.currentEnthusiasm)}
-        </div>
-        <button onClick={this.onIncrement}>+</button>
-        <button onClick={this.onDecrement}>-</button>
+  return (
+    <div className="hello">
+      <div className="greeting">
+        Hello {name + getExclamationMarks(enthusiasmLevel)}
       </div>
-    );
-  }
-
-  updateEnthusiasm(currentEnthusiasm: number) {
-    this.setState({ currentEnthusiasm });
-  }
+      <button onClick={onIncrement}>+</button>
+      <button onClick={onDecrement}>-</button>
+    </div>
+  );
 }
 
 export default Hello;
